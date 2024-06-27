@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: rgb(248, 141, 141);
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.400);
+}
+
+main {
+    max-width: 800px;
+    height: 400px;
+
+    margin: auto;
+
+    background-color: white;
+
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgb(0, 0, 0,0.400);
+
+}
