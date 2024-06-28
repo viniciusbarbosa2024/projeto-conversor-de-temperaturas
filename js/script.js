@@ -14,33 +14,56 @@ function conversão() {
     const temperatura = Number(txtTemperatura.value)
     let temperaturaConvertida = null
 
+    //Funções que serão utilizadas para conversão das temperaturas
+    
+    celsiusParaFahrenheit = (temperaturaInicial) => 1.8*temperaturaInicial + 32
+    
+    fahrenheitParaCelsius = (temperaturaInicial) => (temperaturaInicial -32)/1.8
+
+    celsiusParaKelvin = (temperaturaInicial) => temperaturaInicial + 273.15 
+
+    kelvinParaCelsius = (temperaturaInicial) => temperaturaInicial - 273.15
+
 
     if (escala1 === escala2) {
         // "Conversão" entre duas escalas iguais
         txtResultado.innerHTML = '<p>A conversão só pode ser feita entre duas escalas termométricas distintas</p>'   
     } else if (escala1 === 'celsius' && escala2 === 'fahrenheit') {
         //Conversão de celsius para fahrenheit
-        temperaturaConvertida = 1.8*temperatura + 32
+        temperaturaConvertida = celsiusParaFahrenheit(temperatura)
+
         temperaturaConvertida.toFixed(2)
 
         txtResultado.innerHTML = `<p>${temperatura}°C é equivalente a ${temperaturaConvertida.toFixed(2)}°F</p>`
     } else if (escala1 === 'fahrenheit' && escala2 === 'celsius') {
         //Conversão de fahrenheit para celsius
-
-        temperaturaConvertida = (temperatura -32)/1.8
+        
+        temperaturaConvertida = fahrenheitParaCelsius(temperatura)
 
         txtResultado.innerHTML = `<p>${temperatura}°F é equivalente a ${temperaturaConvertida.toFixed(2)}°C</p>`
     } else if (escala1 === 'celsius' && escala2 === 'kelvin') {
         //Conversão de celsius para kelvin
 
-        temperaturaConvertida = temperatura + 273.15
+        temperaturaConvertida = celsiusParaKelvin(temperatura)
 
         txtResultado.innerHTML = `<p>${temperatura}°C é equivalente a ${temperaturaConvertida.toFixed(2)}K</p>`
     } else if (escala1 === 'kelvin' && escala2 === 'celsius'){
         //Conversão de kelvin para celsius
 
-        temperaturaConvertida = temperatura - 273.15
+        temperaturaConvertida = kelvinParaCelsius(temperatura)
 
         txtResultado.innerHTML = `<p>${temperatura}K é equivalente a ${temperaturaConvertida.toFixed(2)}°C</p>`
+    } else if (escala1 === 'fahrenheit' && escala2 === 'kelvin') {
+        //Conversão de fahrenheit para kelvin
+
+        temperaturaConvertida = celsiusParaKelvin(fahrenheitParaCelsius(temperatura))
+
+        txtResultado.innerHTML = `<p>${temperatura}°F é equivalente a ${temperaturaConvertida.toFixed(2)}K</p>`
+    } else if (escala1 === 'kelvin' && escala2 === 'fahrenheit') {
+        //Conversão de kelvin para fahrenheit 
+
+        temperaturaConvertida = celsiusParaFahrenheit(kelvinParaCelsius(temperatura))
+
+        txtResultado.innerHTML = `<p>${temperatura}K é equivalente a ${temperaturaConvertida.toFixed(2)}°F</p>`
     }
 }
