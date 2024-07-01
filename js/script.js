@@ -66,4 +66,7 @@ function conversão() {
 
         txtResultado.innerHTML = `<p>${temperatura}K é equivalente a ${temperaturaConvertida.toFixed(2)}°F</p>`
     }
+
+    //Limpar caixa de temperatura inicial
+    txtTemperatura.value = null
 }
